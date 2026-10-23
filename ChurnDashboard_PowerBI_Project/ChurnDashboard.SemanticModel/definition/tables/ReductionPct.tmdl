@@ -1,0 +1,14 @@
+table ReductionPct
+	lineageTag: 2f2832bb-dac8-423c-8941-5cdc2e8bf2c1
+
+	column Reduction
+		dataType: double
+		formatString: 0%
+		lineageTag: 465bed1c-8238-44da-8ecc-bb696004be03
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Reduction]
+
+	partition ReductionPct = calculated
+		source = SELECTCOLUMNS(GENERATESERIES(0.05,0.5,0.05),"Reduction",[Value])
+
